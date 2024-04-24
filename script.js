@@ -68,55 +68,87 @@
 // pending baki thake, fullfull success type kaj kore, reject a error ashe
 
 
-let pendingPromise = new Promise ((resolve, reject) => {    // new Promise er P boro haat a declare kora
-    console.log ("i am a pending promise");
-});
-// console a pendingPromise likhe check korle dekha jabe [[PromiseState]]-> "pending", karon kono kaj e hoy nai
+// let pendingPromise = new Promise ((resolve, reject) => {    // new Promise er P boro haat a declare kora
+//     console.log ("i am a pending promise");
+// });
+// // console a pendingPromise likhe check korle dekha jabe [[PromiseState]]-> "pending", karon kono kaj e hoy nai
 
 
 
 
-let resolvePromise = new Promise ((resolve, reject) => {    // new Promise er P boro haat a declare kora
-    console.log ("i am a resolve promise");
-    resolve("any messege, any value", 123);
-});
-// console a resolvePromise likhe check korle dekha jabe [[PromiseState]]-> "fulfilled", resolve a kaj hoise tai
+// let resolvePromise = new Promise ((resolve, reject) => {    // new Promise er P boro haat a declare kora
+//     console.log ("i am a resolve promise");
+//     resolve("any messege, any value", 123);
+// });
+// // console a resolvePromise likhe check korle dekha jabe [[PromiseState]]-> "fulfilled", resolve a kaj hoise tai
 
 
 
-let rejectPromise = new Promise ((resolve, reject) => {    // new Promise er P boro haat a declare kora
-    console.log ("i am a reject promise");
-    reject("any error");
-});
-// console a rejectPromise likhe check korle dekha jabe [[PromiseState]]-> "rejected", eta error o dekhabe
+// let rejectPromise = new Promise ((resolve, reject) => {    // new Promise er P boro haat a declare kora
+//     console.log ("i am a reject promise");
+//     reject("any error");
+// });
+// // console a rejectPromise likhe check korle dekha jabe [[PromiseState]]-> "rejected", eta error o dekhabe
 
 
 
-// resolve er kaj
-function getData(dataId, getNextData) {
+// // resolve er kaj
+// function getData(dataId, getNextData) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout( ()=>{
+//             console.log("data", dataId);
+//             resolve("success");
+//             if (getNextData){
+//                 getNextData();
+//             }
+//         },5000);
+//     });  
+// }
+
+
+
+// // reject er kaj
+// function getData(dataId, getNextData) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout( ()=>{
+//             console.log("data", dataId);
+//             reject("error");
+//             if (getNextData){
+//                 getNextData();
+//             }
+//         },5000);
+//     });  
+// }
+// // eigula console a run koraite hoy
+
+
+
+
+// //promise resolve er khetre
+// const getPromise = () => {
+//     return new Promise((resolve, reject) => {
+//         console.log("i am a promise");
+//         resolve("success print");
+//     });
+// };
+
+// let promise = getPromise();
+// promise.then((result)=>{
+//     console.log("promise fullfilled", result);
+// });
+
+
+
+
+//promise reject er khetre
+const getPromise = () => {
     return new Promise((resolve, reject) => {
-        setTimeout( ()=>{
-            console.log("data", dataId);
-            resolve("success");
-            if (getNextData){
-                getNextData();
-            }
-        },5000);
-    });  
-}
+        console.log("i am a promise");
+        reject("network error");
+    });
+};
 
-
-
-// reject er kaj
-function getData(dataId, getNextData) {
-    return new Promise((resolve, reject) => {
-        setTimeout( ()=>{
-            console.log("data", dataId);
-            reject("error");
-            if (getNextData){
-                getNextData();
-            }
-        },5000);
-    });  
-}
-// eigula console a run koraite hoy
+let promise = getPromise();
+promise.catch((error)=>{
+    console.log("big error", error);
+});
