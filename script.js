@@ -140,15 +140,55 @@
 
 
 
-//promise reject er khetre
-const getPromise = () => {
+// //promise reject er khetre
+// const getPromise = () => {
+//     return new Promise((resolve, reject) => {
+//         console.log("i am a promise");
+//         reject("network error");
+//     });
+// };
+
+// let promise = getPromise();
+// promise.catch((error)=>{
+//     console.log("big error", error);
+// });
+
+
+
+
+// nicher eivabe asynchonised function a kaj kore
+// eigulate 4 second por eksathe print hoy, jar karone amra jevabe chai seta hoy na
+// amra chai 4 er por ekta output, er 4 sec por arekta output
+
+function asycn1() {
     return new Promise((resolve, reject) => {
-        console.log("i am a promise");
-        reject("network error");
-    });
+        setTimeout (()=>{
+            console.log("data 1");
+            resolve("success");
+        },4000);
+    });    
 };
 
-let promise = getPromise();
-promise.catch((error)=>{
-    console.log("big error", error);
+
+function asycn2() {
+    return new Promise((resolve, reject) => {
+        setTimeout (()=>{
+            console.log("data 2");
+            resolve("success");
+        },4000);
+    });    
+};
+
+console.log("fetching data 1");
+let p1 = asycn1();
+p1.then((result)=>{
+    console.log("success 1",result);
 });
+
+
+console.log("fetching data 2");
+let p2 = asycn2();
+p2.then((result)=>{
+    console.log("success 2",result);
+});
+
