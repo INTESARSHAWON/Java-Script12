@@ -160,6 +160,46 @@
 // eigulate 4 second por eksathe print hoy, jar karone amra jevabe chai seta hoy na
 // amra chai 4 er por ekta output, er 4 sec por arekta output
 
+// function asycn1() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout (()=>{
+//             console.log("data 1");
+//             resolve("success");
+//         },4000);
+//     });    
+// };
+
+
+// function asycn2() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout (()=>{
+//             console.log("data 2");
+//             resolve("success");
+//         },4000);
+//     });    
+// };
+
+// console.log("fetching data 1");
+// let p1 = asycn1();
+// p1.then((result)=>{
+//     console.log("success 1",result);
+// });
+
+
+// console.log("fetching data 2");
+// let p2 = asycn2();
+// p2.then((result)=>{
+//     console.log("success 2",result);
+// });
+
+
+
+
+// amra chai 4 ec por ekta output, er 4 sec por arekta output
+// jeta nicher way te possible
+// ekta then er moddhe arekta dhukay dite hoy
+// ei process ke bole PROMISE CHAIN 
+
 function asycn1() {
     return new Promise((resolve, reject) => {
         setTimeout (()=>{
@@ -183,12 +223,17 @@ console.log("fetching data 1");
 let p1 = asycn1();
 p1.then((result)=>{
     console.log("success 1",result);
+    console.log("fetching data 2");
+    let p2 = asycn2();
+    p2.then((result)=>{
+        console.log("success 2",result);
+    });
 });
+// uporer portion ar nicher koek line same kaj kore, functon(). then dea jay chailei, niche otar example
 
-
-console.log("fetching data 2");
-let p2 = asycn2();
-p2.then((result)=>{
-    console.log("success 2",result);
-});
-
+// console.log("fetching data 1");
+// asycn1() .then((result)=>{
+//     console.log("fetching data 2");
+//     asycn2().then((result)=>{
+//     });
+// });
