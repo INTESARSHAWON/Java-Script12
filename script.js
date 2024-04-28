@@ -265,30 +265,69 @@
 // });
 
 
-// uporer code ta promise chain diye korlam niche
-function getData (dataId) {
-    return new Promise((resolve, reject) => {
-        setTimeout(()=>{
-            console.log("data", dataId);  
-            resolve ("success");      
-        }, 2000);
-    });
-};
+// // uporer code ta promise chain diye korlam niche
+// function getData (dataId) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(()=>{
+//             console.log("data", dataId);  
+//             resolve ("success");      
+//         }, 2000);
+//     });
+// };
 
-getData(1)
-    .then((result) => {
-        return getData(2);
-    })
-    .then((result)=>{
-        return getData(3);
-    })
-    .then((result)=>{
-        return getData(4);
-    })
-    .then((result)=>{
-        return getData(5);
-    })
-    .then((result)=>{
-        console.log(result);
-    })
+// getData(1)
+//     .then((result) => {
+//         return getData(2);
+//     })
+//     .then((result)=>{
+//         return getData(3);
+//     })
+//     .then((result)=>{
+//         return getData(4);
+//     })
+//     .then((result)=>{
+//         return getData(5);
+//     })
+//     .then((result)=>{
+//         console.log(result);
+//     })
     
+
+
+
+// // async function- eta sobceye  better, bojha easy...,eta sobar age promise return kore as fullfill
+// function api () {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             console.log("weather data");
+//             resolve(200);
+//         }, 1000);
+//     });
+// };
+
+// async function getWeatherData() {    
+//     await api ();
+//     await api ();
+// };
+
+
+
+
+// ei prpoblem ta upore promise chain use ore korsi, eta ekhn async function use kore korbo 
+function getData (dataId) {
+        return new Promise((resolve, reject) => {
+            setTimeout(()=>{
+                console.log("data", dataId);  
+                resolve ("success");      
+            }, 1000);
+        });
+    };
+
+async function getAllData() {
+    await getData(1);
+    await getData(2);
+    await getData(3);
+    await getData(4);
+};
+// // console a giye async function ke call korle eta kaj kore...,mane ekhane getAllData() ke call dite hobe 
+// // getAllData ke na dekeo kj sara jay, shei process ke bole IIFE 
