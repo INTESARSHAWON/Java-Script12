@@ -331,3 +331,33 @@ async function getAllData() {
 };
 // // console a giye async function ke call korle eta kaj kore...,mane ekhane getAllData() ke call dite hobe 
 // // getAllData ke na dekeo kj sara jay, shei process ke bole IIFE 
+
+
+
+
+
+// niche IIFE'r example ache
+
+
+//uporer code tar moddhe IIFE' er example diye aro sundor korbo
+// IIFE er concept easy...,() erokom ekta parent thesis jekhane kono function ba array function thakbe, function er naam use kora jabe na
+// erpore () erokomc arekta parent thesis thakbe ja diye function run korbe
+// IIFE hocche () ();
+
+
+function getData (dataId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            console.log("data", dataId);  
+            resolve ("success");      
+        }, 2000);
+    });
+};
+
+(async function() {
+await getData(1);
+await getData(2);
+await getData(3);
+await getData(4);
+}) ();
+
